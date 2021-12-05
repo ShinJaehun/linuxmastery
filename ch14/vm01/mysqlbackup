@@ -1,0 +1,18 @@
+#!/bin/bash
+# /usr/local/bin/mysqlbackup
+# mysql 데이터베이스 백업 스크립트
+
+if [[ -z "$1" ]] || [[ -z "$2" ]]; then
+        echo "usage: \$0 [database name] [user name]"
+else
+  dbname="$1"
+  username="$2"
+  backupdir="/home/administrator/mysqldump"
+  dump="${backupdir}/${dbname}`date +%y%m%d`.db"
+
+  if [[ -f "${dump}" ]]; then
+          rm -f "${dump}"
+  fi
+
+  mysqldump --no-tablespaces --databases "${dbname}" -u "${username}" > "${dump}"
+fi

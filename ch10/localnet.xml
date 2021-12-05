@@ -1,0 +1,7 @@
+<network>
+	<name>localnet</name>
+	<bridge name='virbr200'/>
+	<ip address='10.200.200.254' netmask='255.255.255.0'>
+	</ip>
+</network>
+

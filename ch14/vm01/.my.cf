@@ -1,0 +1,3 @@
+[mysqldump]
+user = master
+password = ppassword

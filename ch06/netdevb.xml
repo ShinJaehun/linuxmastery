@@ -1,0 +1,5 @@
+<network>
+  <name>netdevb</name>
+  <bridge name='virbr20'/>
+</network>
+

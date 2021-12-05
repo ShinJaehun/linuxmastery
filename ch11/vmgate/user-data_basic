@@ -1,0 +1,7 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: localhost
+    username: administrator
+    password: 

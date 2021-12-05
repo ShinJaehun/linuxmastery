@@ -1,0 +1,5 @@
+<network>
+  <name>netdeva</name>
+  <bridge name='virbr10'/>
+</network>
+

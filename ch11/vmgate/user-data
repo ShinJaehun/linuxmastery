@@ -1,0 +1,24 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: localhost
+    username: administrator
+    password: 
+  apt:
+    primary:
+    - arches: [default]
+    uri: http://mirror.kakao.com/ubuntu
+  ssh:
+    install-server: yes
+    authorized-keys: 
+  packages: [vim, tree, curl, unzip]
+  user-data:
+    timezone: Asia/Seoul
+  storage:
+    layout:
+      name: direct
+  late-commands:
+    - wget http://10.200.200.199/tftp/initscript.sh -O /target/root/initscript.sh
+    - curtin in-target --target=/target -- /bin/bash /root/initscript.sh
+    - curtin in-target --target=/target -- /usr/bin/rm /root/initscript.sh

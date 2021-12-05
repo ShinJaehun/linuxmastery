@@ -1,0 +1,30 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: localhost
+    username: administrator
+    password: 
+  apt:
+    primary:
+    - arches: [default]
+    uri: http://mirror.kakao.com/ubuntu
+  ssh:
+    install-server: yes
+    authorized-keys: 
+  packages: [vim, tree, curl, unzip]
+  user-data:
+    timezone: Asia/Seoul
+  storage:
+    config:
+    - {type: disk, id: disk1, ptable: gpt, path: /dev/vda, wipe:superblock, grub_device: false}
+    - {type: partition, id: partition1, device: disk1, size: 536870912, grub_device: true, flag: boot}
+    - {type: format, id: format1, fstype: fat32, volume: partition1}
+    - {type: mount, id: mount1, device: format1, path: /boot/efi}
+    - {type: partition, id: partition2, device: disk1, size: -1, flag: linux}
+    - {type: format, id: format2, volume: partition2, fstype: ext4}
+    - {type: mount, id: mount2, device: format2, path: /}
+  late-commands:
+    - wget http://10.200.200.199/tftp/initscript.sh -O /target/root/initscript.sh
+    - curtin in-target --target=/target -- /bin/bash /root/initscript.sh
+    - curtin in-target --target=/target -- /usr/bin/rm /root/initscript.sh

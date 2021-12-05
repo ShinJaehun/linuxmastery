@@ -1,0 +1,12 @@
+#port=0
+
+
+dhcp-range=10.200.200.0,static,12h
+dhcp-option=3,10.200.200.199
+dhcp-option=6,10.200.200.199
+dhcp-authoritative
+
+address=/master.linuxmastery.kr/10.200.200.254
+
+dhcp-host=52:54:00:e2:76:fa,vm01,10.200.200.101,infinite
+dhcp-host=52:54:00:05:9e:c0,vm02,10.200.200.102,infinite

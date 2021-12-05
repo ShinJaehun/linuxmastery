@@ -1,0 +1,5 @@
+DEFAULT install
+LABEL install
+  KERNEL vmlinuz
+  INITRD initrd
+  APPEND ip=dhcp autoinstall ds=nocloud-net;s=http://10.200.200.199/tftp/ url=http://10.200.200.199/tftp/ubuntu-20.04.3-live-server-amd64.iso 

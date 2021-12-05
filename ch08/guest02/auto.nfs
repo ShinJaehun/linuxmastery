@@ -1,0 +1,2 @@
+guest01_administrator	-fstype=nfs4 10.100.100.1:/srv/nfs/administrator
+guest01_anonymous	-fstype=nfs4 10.100.100.1:/srv/nfs/anonymous
